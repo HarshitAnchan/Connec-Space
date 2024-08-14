@@ -1,6 +1,6 @@
 import React from "react";
 import SideNav from "../_components/SideNav";
-import { Room } from "@/app/Room";
+import { Room } from "../../../Room";
 
 function Workspace({ params }) {
   return (

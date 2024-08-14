@@ -7,7 +7,7 @@ import {
   ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "@/config/firebaseConfig";
+import { db } from "../config/firebaseConfig";
 
 export function Room({ children, params }) {
   return (

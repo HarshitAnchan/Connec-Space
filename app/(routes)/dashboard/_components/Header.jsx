@@ -1,6 +1,6 @@
 "use client";
-import Logo from "@/app/_components/Logo";
-import { db } from "@/config/firebaseConfig";
+import Logo from "../../_components/../../_components/Logo";
+import { db } from "../../../../config/firebaseConfig";
 import {
   OrganizationSwitcher,
   UserButton,
