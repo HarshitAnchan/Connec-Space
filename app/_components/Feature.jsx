@@ -1,73 +1,76 @@
-import { FaUsers, FaCogs, FaComments } from "react-icons/fa";
+"use client";
 
-const FeaturesSection = () => {
+import { motion } from "framer-motion";
+import { Users, MessageSquare, Clipboard } from "lucide-react"; // Replace these with custom icons or ones you prefer
+
+const features = [
+  {
+    icon: Users,
+    title: "Real-Time Collaboration",
+    description:
+      "Work seamlessly with your team using real-time commenting, ensuring everyone is on the same page.",
+  },
+  {
+    icon: Clipboard,
+    title: "Customizable Workspaces",
+    description:
+      "Organize your projects with 5 fully customizable workspaces tailored to your team’s workflow.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Real-Time Notifications",
+    description:
+      "Stay informed with real-time notifications that keep you updated on project changes and comments.",
+  },
+];
+
+const FeatureCard = ({ icon: Icon, title, description }) => {
   return (
-    <section className="bg-gray-900 text-white">
-      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="mx-auto max-w-lg text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            Why Choose ConnecSpace?
-          </h2>
+    <motion.div
+      className="bg-black p-8 rounded-lg relative overflow-hidden border border-gray-800"
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
+        transition: { duration: 0.3 },
+      }}
+    >
+      <Icon className="w-12 h-12 text-blue-500 mb-4" />
+      <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+      <p className="text-gray-400">{description}</p>
+    </motion.div>
+  );
+};
 
-          <p className="mt-4 text-gray-300">
-            Explore the features that make ConnecSpace the perfect choice for
-            your collaborative needs.
+export default function AnimatedFeatures() {
+  return (
+    <section className="py-16 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <motion.div
+            className="inline-block"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <span className="bg-gradient-to-r from-fuchsia-600 to-blue-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+              Collaborative & Productive
+            </span>
+          </motion.div>
+          <h2 className="mt-6 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            Power Up Your Team with Real-Time Tools
+          </h2>
+          <p className="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
+            ConnecSpace offers cutting-edge features like real-time
+            collaboration, customizable workspaces, and instant notifications,
+            designed to help your team thrive.
           </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <a
-            className="block rounded-xl border border-gray-800 p-8 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:border-pink-500/10 hover:shadow-pink-500/10"
-            href="#"
-          >
-            <FaUsers className="text-4xl text-pink-500" />
-
-            <h2 className="mt-4 text-xl font-bold text-white">
-              Real-Time Collaboration
-            </h2>
-
-            <p className="mt-1 text-sm text-gray-300">
-              Work together on documents, tasks, and projects in real time, no
-              matter where you are. Seamlessly share and edit content with your
-              team.
-            </p>
-          </a>
-
-          <a
-            className="block rounded-xl border border-gray-800 p-8 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:border-pink-500/10 hover:shadow-pink-500/10"
-            href="#"
-          >
-            <FaCogs className="text-4xl text-pink-500" />
-
-            <h2 className="mt-4 text-xl font-bold text-white">
-              Customizable Workspaces
-            </h2>
-
-            <p className="mt-1 text-sm text-gray-300">
-              Tailor your work environment to fit your needs. Create, organize,
-              and manage workspaces that align with your team’s workflow.
-            </p>
-          </a>
-
-          <a
-            className="block rounded-xl border border-gray-800 p-8 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:border-pink-500/10 hover:shadow-pink-500/10"
-            href="#"
-          >
-            <FaComments className="text-4xl text-pink-500" />
-
-            <h2 className="mt-4 text-xl font-bold text-white">
-              Integrated Communication
-            </h2>
-
-            <p className="mt-1 text-sm text-gray-300">
-              Keep conversations in context with built-in chat, and comment
-              threads. Never lose track of important discussions.
-            </p>
-          </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} {...feature} />
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default FeaturesSection;
+}

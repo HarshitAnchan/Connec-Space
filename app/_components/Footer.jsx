@@ -1,44 +1,82 @@
-import React from "react";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+"use client";
 
-function Footer() {
+import { motion } from "framer-motion";
+import { Github, Twitter, Linkedin } from "lucide-react";
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com" },
+  { icon: Twitter, href: "https://twitter.com" },
+  { icon: Linkedin, href: "https://linkedin.com" },
+];
+
+const FooterLink = ({ href, children }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-white transition-colors"
+    whileHover={{ scale: 1.2, rotate: 5 }}
+    whileTap={{ scale: 0.9 }}
+  >
+    {children}
+  </motion.a>
+);
+
+export default function AnimatedFooter() {
   return (
-    <footer className="bg-white text-gray-800 py-6 shadow-md dark:bg-gray-900 dark:text-gray-300">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center">
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold">Connect with Us</h2>
-            <div className="flex space-x-4 mt-2">
-              <a
-                href="https://x.com/HarshitAnchan02"
-                aria-label="Twitter"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
-              >
-                <FaTwitter size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/harshitanchan/"
-                aria-label="LinkedIn"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
-              >
-                <FaLinkedin size={24} />
-              </a>
-              <a
-                href="https://github.com/HarshitAnchan"
-                aria-label="GitHub"
-                className="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
-              >
-                <FaGithub size={24} />
-              </a>
-            </div>
-          </div>
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} ConnecSpace. All rights reserved.
-          </p>
-        </div>
+    <footer className="bg-black text-white py-8">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center"
+        >
+          <motion.div
+            className="mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                d="M20 5L5 20L20 35L35 20L20 5Z"
+                stroke="white"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+            </svg>
+          </motion.div>
+          <motion.div
+            className="flex space-x-4 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            {socialLinks.map((link, index) => (
+              <FooterLink key={index} href={link.href}>
+                <link.icon size={24} />
+              </FooterLink>
+            ))}
+          </motion.div>
+          <motion.p
+            className="text-sm text-gray-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            © {new Date().getFullYear()} Your Company. All rights reserved.
+          </motion.p>
+        </motion.div>
       </div>
     </footer>
   );
 }
-
-export default Footer;
