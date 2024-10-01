@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { Github, Twitter, Linkedin } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com" },
-  { icon: Twitter, href: "https://twitter.com" },
-  { icon: Linkedin, href: "https://linkedin.com" },
+  { icon: Github, href: "https://github.com/HarshitAnchan" },
+  { icon: Twitter, href: "https://x.com/HarshitAnchan02" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/harshitanchan/" },
 ];
 
 const FooterLink = ({ href, children }) => (
@@ -73,7 +73,7 @@ export default function AnimatedFooter() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            © {new Date().getFullYear()} Your Company. All rights reserved.
+            © {new Date().getFullYear()} ConnecSpace. All rights reserved.
           </motion.p>
         </motion.div>
       </div>
